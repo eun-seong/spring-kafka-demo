@@ -20,9 +20,9 @@ import java.util.Map;
 
 @Component
 public class KafkaManager {
-    private static final String BOOTSTRAP_SERVERS = "localhost:9092";
-    private final Map<String, Object> consumerProps;
-    private final Map<String, Object> producerProps;
+    private static final String BOOTSTRAP_SERVERS = "localhost:9092";   // kafka host
+    private final Map<String, Object> consumerProps;                    // consumer settings
+    private final Map<String, Object> producerProps;                    // producer settings
 
     public KafkaManager() {
         this.consumerProps = Map.of(
@@ -41,18 +41,18 @@ public class KafkaManager {
                 ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
     }
 
+    public Flux<SenderResult<String>> producer(final Publisher<? extends SenderRecord<String, String, String>> publisher) {
+        final SenderOptions<String, String> options = SenderOptions.create(producerProps);
+
+        return KafkaSender.create(options)
+                .send(publisher);
+    }
+
     public Flux<ReceiverRecord<String, String>> consumer(final String topic) {
         final ReceiverOptions<String, String> options = ReceiverOptions.<String, String>create(consumerProps)
                 .subscription(List.of(topic));
 
         return KafkaReceiver.create(options)
                 .receive();
-    }
-
-    public Flux<SenderResult<String>> producer(final Publisher<? extends SenderRecord<String, String, String>> publisher) {
-        final SenderOptions<String, String> options = SenderOptions.create(producerProps);
-
-        return KafkaSender.create(options)
-                .send(publisher);
     }
 }

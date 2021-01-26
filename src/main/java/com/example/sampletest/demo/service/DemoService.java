@@ -2,14 +2,12 @@ package com.example.sampletest.demo.service;
 
 import com.example.sampletest.demo.core.KafkaManager;
 import org.apache.kafka.clients.producer.ProducerRecord;
-import org.apache.kafka.common.protocol.types.Field;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import reactor.core.Disposable;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
-import reactor.kafka.receiver.ReceiverRecord;
 import reactor.kafka.sender.SenderRecord;
 import reactor.util.function.Tuple2;
 import reactor.util.function.Tuples;
