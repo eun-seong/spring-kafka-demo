@@ -1,0 +1,4 @@
+com/example/sampletest/demo/controller/DemoController.class
+com/example/sampletest/demo/service/DemoService.class
+com/example/sampletest/demo/DemoApplication.class
+com/example/sampletest/demo/core/KafkaManager.class
