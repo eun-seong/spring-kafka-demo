@@ -1,0 +1,6 @@
+com/example/sampletest/demo/core/DBManager.class
+com/example/sampletest/demo/DemoApplication.class
+com/example/sampletest/demo/core/KafkaManager.class
+com/example/sampletest/demo/core/StdInfo.class
+com/example/sampletest/demo/controller/DemoController.class
+com/example/sampletest/demo/service/DemoService.class
